@@ -1,7 +1,8 @@
-import React from 'react'
-import { Flex, Box, Text, Image, TextInput, Title, PasswordInput, Button } from '@mantine/core';
+import React from 'react';
+import { Flex, Box, Text, Image, TextInput, Title, PasswordInput, Button, Alert } from '@mantine/core';
 import { useNavigate } from "react-router-dom";
 import { useFormik } from 'formik';
+import { getAuth, signInWithEmailAndPassword } from 'firebase/auth';
 
 const validate = values => {
     const errors = {};
@@ -9,7 +10,7 @@ const validate = values => {
     if (!values.password) {
         errors.password = 'Required';
     } else if (values.password.length < 8) {
-        errors.password = 'Must be atleast 8 characters';
+        errors.password = 'Must be at least 8 characters';
     }
 
     if (!values.email) {
@@ -22,24 +23,26 @@ const validate = values => {
 };
 
 function SignIn() {
-
     const navigate = useNavigate();
-
     const formik = useFormik({
         initialValues: {
             email: '',
             password: '',
         },
         validate,
-        onSubmit: values => {
-            console.log(JSON.stringify(values, null, 2));
-            navigate("/home")
+        onSubmit: async values => {
+            try {
+                const auth = getAuth();
+                await signInWithEmailAndPassword(auth, values.email, values.password);
+                navigate("/home");
+            } catch (error) {
+                alert(error.message);
+            }
         },
     });
 
-
-    const handleSignUpclick = () => {
-        navigate("/signup")
+    const handleSignUpClick = () => {
+        navigate("/signup");
     }
 
     return (
@@ -48,7 +51,6 @@ function SignIn() {
                 <Image
                     style={{ width: "25vw" }}
                     src="https://notioly.com/wp-content/uploads/2023/04/228.Robot_.png"
-
                 />
                 <Box style={{ width: "280px" }}>
                     <Title order={1}>Sign In</Title>
@@ -70,15 +72,15 @@ function SignIn() {
                         value={formik.values.password}
                         error={formik.errors.password ? <>{formik.errors.password}</> : null}
                     />
-                    <Button color='dark' fullWidth onClick={formik.handleSubmit}>Sign In </Button>
+                    <Button color='dark' fullWidth onClick={formik.handleSubmit}>Sign In</Button>
                     <Flex mt={10}>
-                        <Text c="dimmed" size="xs">Dont have an Account?</Text>
-                        <Text onClick={handleSignUpclick} style={{ cursor: "pointer" }} c="dimmed" ml={5} size="xs" td="underline">SignUp</Text>
+                        <Text c="dimmed" size="xs">Don't have an Account?</Text>
+                        <Text onClick={handleSignUpClick} style={{ cursor: "pointer" }} c="dimmed" ml={5} size="xs" td="underline">Sign Up</Text>
                     </Flex>
                 </Box>
             </Flex>
         </div>
-    )
+    );
 }
 
-export default SignIn
+export default SignIn;

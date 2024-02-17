@@ -5,6 +5,7 @@ import '@mantine/core/styles.css';
 import SignUp from './Components/Landing/SignUp';
 import Home from './Pages/Home'
 import { CheckOTP } from './Components/Landing/CheckOTP';
+import { app } from './firebase-config';
 
 
 function App() {
