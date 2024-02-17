@@ -11,7 +11,7 @@ function SignUp() {
     navigate("/")
   }
 
-  const handleCreateAccount = () =>{
+  const handleCreateAccount = () => {
     navigate("/otp")
   }
 
@@ -19,11 +19,6 @@ function SignUp() {
   return (
     <div>
       <Flex>
-
-        <Image
-          style={{ width: "50vw", height: "100vh" }}
-          src="https://img.freepik.com/free-photo/3d-cartoon-background-children_23-2150473315.jpg?w=1380&t=st=1708077033~exp=1708077633~hmac=a9c82d6508f1832d852a2c3b583166360d7efbc566c30f4b849bf629dad926ce"
-        />
 
         <Flex style={{ width: "100vw" }} justify={"center"} align={"center"}>
 
@@ -41,7 +36,7 @@ function SignUp() {
               mt={10}
               label="Email"
             />
-            
+
             {/* <PasswordInput
               my={10}
               label="Create Password"
@@ -54,7 +49,7 @@ function SignUp() {
               placeholder="Your Password"
             /> */}
 
-            <Button mt={10} fullWidth onClick={handleCreateAccount}>Create Account</Button>
+            <Button color='dark' mt={10} fullWidth onClick={handleCreateAccount}>Create Account</Button>
 
             <Flex mt={10}>
               <Text c="dimmed" size="xs">Already Have an Account?</Text>
@@ -63,6 +58,11 @@ function SignUp() {
           </Box>
 
         </Flex>
+
+        <Image
+          style={{ width: "50vw", height: "100vh", padding: "100px" }}
+          src="https://notioly.com/wp-content/uploads/2023/11/314.Education.png"
+        />
 
 
       </Flex>
