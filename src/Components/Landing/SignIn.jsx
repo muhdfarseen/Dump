@@ -9,7 +9,7 @@ const validate = values => {
     if (!values.password) {
         errors.password = 'Required';
     } else if (values.password.length < 8) {
-        errors.password = 'Must be 8 characters or less';
+        errors.password = 'Must be atleast 8 characters';
     }
 
     if (!values.email) {
@@ -42,52 +42,41 @@ function SignIn() {
         navigate("/signup")
     }
 
-
-
     return (
         <div>
-
-            <Flex>
-
-                <Flex style={{ width: "100vw" }} justify={"center"} align={"center"}>
-                    <Box style={{ width: "280px" }}>
-                        <Title order={1}>Sign In</Title>
-                        <TextInput
-                            mt={10}
-                            label="Email"
-                            placeholder=""
-                            name='email'
-                            onChange={formik.handleChange}
-                            value={formik.values.email}
-                            error={formik.errors.email ? <>{formik.errors.email}</> :null}
-                        />
-                       
-                        <PasswordInput
-                            my={10}
-                            label="Password"
-                            placeholder=""
-                            name='password'
-                            onChange={formik.handleChange}
-                            value={formik.values.password}
-                            error={formik.errors.password ? <>{formik.errors.password}</> :null}
-                        />
-
-                        <Button color='dark' fullWidth onClick={formik.handleSubmit}>Sign In </Button>
-
-                        <Flex mt={10}>
-                            <Text c="dimmed" size="xs">Dont have an Account?</Text>
-                            <Text onClick={handleSignUpclick} style={{ cursor: "pointer" }} c="dimmed" ml={5} size="xs" td="underline">SignUp</Text>
-                        </Flex>
-                    </Box>
-                </Flex>
-
+            <Flex style={{ width: "100vw", height: "100vh" }} gap={90} justify={"center"} align={"center"}>
                 <Image
-                    style={{ width: "50vw", height: "100vh", padding: "100px" }}
-                    src="https://notioly.com/wp-content/uploads/2023/12/325.Fast-Worker.png"
+                    style={{ width: "25vw" }}
+                    src="https://notioly.com/wp-content/uploads/2023/04/228.Robot_.png"
+
                 />
-
+                <Box style={{ width: "280px" }}>
+                    <Title order={1}>Sign In</Title>
+                    <TextInput
+                        mt={10}
+                        label="Email"
+                        placeholder=""
+                        name='email'
+                        onChange={formik.handleChange}
+                        value={formik.values.email}
+                        error={formik.errors.email ? <>{formik.errors.email}</> : null}
+                    />
+                    <PasswordInput
+                        my={10}
+                        label="Password"
+                        placeholder=""
+                        name='password'
+                        onChange={formik.handleChange}
+                        value={formik.values.password}
+                        error={formik.errors.password ? <>{formik.errors.password}</> : null}
+                    />
+                    <Button color='dark' fullWidth onClick={formik.handleSubmit}>Sign In </Button>
+                    <Flex mt={10}>
+                        <Text c="dimmed" size="xs">Dont have an Account?</Text>
+                        <Text onClick={handleSignUpclick} style={{ cursor: "pointer" }} c="dimmed" ml={5} size="xs" td="underline">SignUp</Text>
+                    </Flex>
+                </Box>
             </Flex>
-
         </div>
     )
 }
