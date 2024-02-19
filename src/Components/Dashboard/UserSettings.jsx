@@ -1,7 +1,5 @@
-import React from 'react'
+import React from "react";
 
 export const UserSettings = () => {
-  return (
-    <div>UserSettings</div>
-  )
-}
+  return <div>UserSettings</div>;
+};

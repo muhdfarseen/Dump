@@ -1,10 +1,7 @@
-.ipbox{
-    height: 50px;
-    width: 50px;
-    border: 1px solid gray;
-    border-radius: 5px;
-    text-align: center; 
-
+.ipbox {
+  height: 50px;
+  width: 50px;
+  border: 1px solid gray;
+  border-radius: 5px;
+  text-align: center;
 }
-
-
